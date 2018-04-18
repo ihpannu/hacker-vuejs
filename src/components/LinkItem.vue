@@ -1,24 +1,40 @@
 <template>
-  <div class="view center box">
-    <section>
-      <ul>
-        <li >
-          <a class="description" :href="link.url"> {{link.description}}</a>
-        </li>
-        <li class="right">
-          <a class="is-link" :href="link.url">
-            <i class="fas fa-link"></i>
-          </a>
-        </li>
-      </ul>
-    </section>
+
+<div class="card ">
+  <div class="card-content ">
+    <span>{{linkNumber}}</span>
+    <a :href="link.url" class="card-header-title">
+      {{link.description}}
+    </a>
   </div>
+  <footer class="card-footer">
+    <a v-if="userId" class="card-footer-item" @click="voteForLink()">▲</a>
+    <a class=" is-link card-footer-item" :href="link.url">
+      <i class="fas fa-link"></i>
+    </a>
+  </footer>
+</div>
+
 </template>
 
 <script>
 export default {
   name: "LinkItem",
-  props: ["link"]
+
+  computed: {
+    userId() {
+      return this.$root.$data.userId;
+    },
+    linkNumber() {
+      if (this.$route.path.includes("new"))
+        return (this.pageNumber - 1) * this.linkPerPage + (this.index + 1);
+      else return this.index + 1;
+    }
+  },
+  props: ["link", "index"]
+  // methods: {
+  //   timeDifferenceForDate
+  // }
 };
 </script>
 

@@ -30,12 +30,12 @@
       <div class="field is-grouped">
         <p class="control">
           <button @click="confirm()" class="button is-primary">
-            {{login ? 'login' : 'create account'}}
+            {{login ? 'Sign In' : 'Create Account'}}
           </button>
         </p>
         <p class="control">
           <button @click="login = !login" class="button is-dark">
-            {{login ? 'need to create an account?' : 'already have an account?'}}
+            {{login ? 'Sign Up' : 'Sign in'}}
           </button>
         </p>
       </div>
