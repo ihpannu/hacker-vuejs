@@ -4,7 +4,7 @@
       <ball-pulse-loader color="#42b983" size="20px"></ball-pulse-loader>
     </div>
     <div>
-      <link-item v-for="link in allLinks" :key="link.id" :link="link"></link-item>
+      <link-item  v-for="(link, index) in allLinks" :key="link.id" :link="link" :index="index"></link-item>
     </div>
   </div>
 </template>

@@ -3,21 +3,26 @@
 <div class="card ">
   <div class="card-content ">
     <span>{{linkNumber}}</span>
-    <a :href="link.url" class="card-header-title">
+    <p :href="link.url" class="card-header-title">
       {{link.description}}
+          <a class=" is-link card-footer-item" :href="link.url">
+      <i class="fas fa-link"></i>
     </a>
+    </p>
   </div>
   <footer class="card-footer">
     <a v-if="userId" class="card-footer-item" @click="voteForLink()">▲</a>
-    <a class=" is-link card-footer-item" :href="link.url">
-      <i class="fas fa-link"></i>
-    </a>
+
+    <p class="card-footer-item">
+      {{link.votes.length}} votes | by {{link.postedBy ? link.postedBy.name : 'Unknown'}} {{timeDifferenceForDate(link.createdAt)}}
+    </p>
   </footer>
 </div>
 
 </template>
 
 <script>
+import timeDifferenceForDate from "../utils";
 export default {
   name: "LinkItem",
 
@@ -31,10 +36,10 @@ export default {
       else return this.index + 1;
     }
   },
-  props: ["link", "index"]
-  // methods: {
-  //   timeDifferenceForDate
-  // }
+  props: ["link", "index"],
+  methods: {
+    timeDifferenceForDate
+  }
 };
 </script>
 
