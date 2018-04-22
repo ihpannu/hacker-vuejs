@@ -6,6 +6,7 @@
       <b-field>
         <b-input placeholder="Search..." type="search" icon="magnify" v-model="searchText">
         </b-input>
+          <a class="button is-primary" @click="createLink()">Submit</a>
       </b-field>
       <!-- <input type="text" v-model="searchText"> -->
     </div>
