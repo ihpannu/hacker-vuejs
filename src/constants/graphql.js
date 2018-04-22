@@ -91,6 +91,7 @@ export const CREATE_VOTE_MUTATION = gql`
   }
 `;
 
+// THIS ADDS SEARCH functionalality
 export const ALL_LINKS_SEARCH_QUERY = gql`
   query AllLinksSearchQuery($searchText: String!) {
     allLinks(
