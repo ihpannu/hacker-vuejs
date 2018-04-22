@@ -50,10 +50,10 @@ export default {
       }
       const linkId = this.link.id;
       this.$apollo.mutate({
-        mutation: CREATE_VOTE_MUTATION,
         variables: {
           userId,
           linkId
+        }
       });
     }
   }
