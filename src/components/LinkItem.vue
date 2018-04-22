@@ -23,6 +23,8 @@
 
 <script>
 import { timeDifferenceForDate } from "../utils";
+import { CREATE_VOTE_MUTATION } from "../constants/graphql";
+import { GC_USER_ID } from "../constants/settings";
 export default {
   name: "LinkItem",
 
@@ -38,7 +40,22 @@ export default {
   },
   props: ["link", "index"],
   methods: {
-    timeDifferenceForDate
+    timeDifferenceForDate,
+    voteForLink() {
+      const userId = localStorage.getItem(GC_USER_ID);
+      const voterIds = this.link.votes.map(vote => vote.user.id);
+      if (voterIds.includes(userId)) {
+        alert(`User (${userId}) already voted for this link.`);
+        return;
+      }
+      const linkId = this.link.id;
+      this.$apollo.mutate({
+        mutation: CREATE_VOTE_MUTATION,
+        variables: {
+          userId,
+          linkId
+      });
+    }
   }
 };
 </script>
