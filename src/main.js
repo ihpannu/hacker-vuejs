@@ -34,7 +34,7 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   connectToDevTools: true
 });
-
+Vue.use(Buefy.default);
 Vue.use(VueApollo);
 Vue.use(VueLoaders);
 

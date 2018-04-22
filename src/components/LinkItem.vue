@@ -23,7 +23,7 @@
 
 <script>
 import { timeDifferenceForDate } from "../utils";
-import { CREATE_VOTE_MUTATION } from "../constants/graphql";
+import { ALL_LINKS_QUERY, CREATE_VOTE_MUTATION } from "../constants/graphql";
 import { GC_USER_ID } from "../constants/settings";
 export default {
   name: "LinkItem",
@@ -54,8 +54,24 @@ export default {
         variables: {
           userId,
           linkId
+        },
+        update: (store, { data: { createVote } }) => {
+          this.updateStoreAfterVote(store, createVote, linkId);
         }
       });
+    },
+    updateStoreAfterVote(store, createVote, linkId) {
+      // 1
+      const data = store.readQuery({
+        query: ALL_LINKS_QUERY
+      });
+
+      // 2
+      const votedLink = data.allLinks.find(link => link.id === linkId);
+      votedLink.votes = createVote.link.votes;
+
+      // 3
+      store.writeQuery({ query: ALL_LINKS_QUERY, data });
     }
   }
 };

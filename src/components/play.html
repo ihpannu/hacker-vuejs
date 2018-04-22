@@ -1,1 +1,15 @@
-
+<template>
+  <div>
+    <div>
+      Search
+      <!-- 1 -->
+      <b-field>
+        <b-input placeholder="Search..." type="search" icon="magnify" v-model="searchText">
+        </b-input>
+      </b-field>
+      <!-- <input type="text" v-model="searchText"> -->
+    </div>
+    <link-item v-for="(link, index) in allLinks" :key="link.id" :link="link" :index="index">
+    </link-item>
+  </div>
+</template>

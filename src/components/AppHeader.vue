@@ -13,6 +13,10 @@
         </a>
         <span>|</span>
         <a>
+          <router-link to="/search">Search</router-link>
+        </a>
+        <span>|</span>
+        <a>
           <router-link to="/create">Submit</router-link>
         </a>
         <span>|</span>

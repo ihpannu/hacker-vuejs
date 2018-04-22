@@ -5,6 +5,7 @@ import About from "./views/About.vue";
 import CreateLink from "./components/CreateLink.vue";
 import LinkList from "./components/LinkList.vue";
 import AppLogin from "./components/AppLogin.vue";
+import Search from "./components/Search.vue";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
       path: "/login",
       name: "login",
       component: AppLogin
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: Search
     }
   ],
   mode: "history"
