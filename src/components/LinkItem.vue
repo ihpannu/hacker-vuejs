@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import timeDifferenceForDate from "../utils";
+import { timeDifferenceForDate } from "../utils";
 export default {
   name: "LinkItem",
 
