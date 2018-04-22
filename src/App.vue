@@ -15,8 +15,10 @@ export default {
 </script>
 
 <style lang="scss">
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
 // Set your colors
-$primary: #8c67ef;
+$primary: #42b882;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);
@@ -41,4 +43,6 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 // Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
 </style>
