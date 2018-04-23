@@ -21,12 +21,15 @@ const httpLink = new HttpLink({
   uri: "https://api.graph.cool/simple/v1/cjg1ya1hs7afk0119xtu0e4n7"
 });
 
-const wsClient = new SubscriptionClient("__SUBSCRIPTION_API_ENDPOINT__", {
-  reconnect: true,
-  connectionParams: {
-    authToken: localStorage.getItem(GC_AUTH_TOKEN)
+const wsClient = new SubscriptionClient(
+  "wss://subscriptions.graph.cool/v1/cjg1ya1hs7afk0119xtu0e4n7",
+  {
+    reconnect: true,
+    connectionParams: {
+      authToken: localStorage.getItem(GC_AUTH_TOKEN)
+    }
   }
-});
+);
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
   const token = localStorage.getItem(GC_AUTH_TOKEN);
